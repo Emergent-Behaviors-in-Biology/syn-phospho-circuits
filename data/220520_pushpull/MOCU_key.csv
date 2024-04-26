@@ -1,0 +1,13 @@
+component, file_name, anti_col_name, GFP_col_name
+empty_substrate, BFP, ST, GFP
+empty_phospho, BFP, SpT, GFP
+empty_kinase, BFP, WT, GFP
+empty_pptase, BFP, pptase, GFP
+empty_kinase2, BFP, ST, GFP
+empty_kinase2_phospho, BFP, SpT, GFP
+substrate, ST_SpT MOCU, ST, GFP
+phospho, ST_SpT MOCU, SpT, GFP
+kinase, WT MOCU, WT, GFP
+pptase, pptase MOCU, pptase, GFP
+kinase2, ST_SpT MOCU, ST, GFP
+kinase2_phospho, ST_SpT MOCU, SpT, GFP

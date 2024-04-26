@@ -1,0 +1,17 @@
+exp_name,file_name,model,kinase_variant,kinase_zipper,pptase_variant,pptase_zipper,kinase2_variant,kinase2_zipper,substrate_col,phospho_col,kinase_col,pptase_col,kinase2_col,kinase2_phospho_col,KS_stat
+substrate_only,substrate,substrate_only,,,,,,,ST,SpT,WT,,,,0.02026756388688622
+non-pplatable,SD,non-pplatable,174,L+A,,,,,ST,SpT,WT,,,,0.03381785820231385
+kinase_dead,KD,push,kinase_dead,L+A,,,,,ST,SpT,WT,,,,0.05830492535558952
+kinase_non-binding,RR,push,kinase_wt,kinase_non-binding,,,,,ST,SpT,WT,,,,0.03230447292702066
+kinase_variant_375,375,push,375,L+A,,,,,ST,SpT,WT,,,,0.05239508266214499
+kinase_variant_419,419,push,419,L+A,,,,,ST,SpT,WT,,,,0.09940756229308245
+kinase_zipper_E+A,S+E,push,kinase_wt,E+A,,,,,ST,SpT,WT,,,,0.07729091441397484
+kinase_zipper_E+E,E+E,push,kinase_wt,E+E,,,,,ST,SpT,WT,,,,0.08562658763759526
+kinase_zipper_L+A,L+A,push,kinase_wt,L+A,,,,,ST,SpT,WT,,,,0.13285043381357953
+L3,L3,push,kinase_wt,L+A,,,,,ST,SpT,WT,,,,0.10927681329215039
+L7,L7,push,kinase_wt,L+A,,,,,ST,SpT,WT,,,,0.07468408348715036
+pptase_dead,pptase_dead,pushpull,kinase_wt,L+A,pptase_dead,L+A,,,ST,SpT,WT,pptase,,,0.1307226107226107
+pptase_non-binding,pptase_nonbinding,pushpull,kinase_wt,L+A,pptase_wt,pptase_non-binding,,,ST,SpT,WT,pptase,,,0.11823267279795202
+pptase,pptase,pushpull,kinase_wt,L+A,pptase_wt,L+A,,,ST,SpT,WT,pptase,,,0.10339083878643665
+pptase_weak,pptase_weak,pushpull,kinase_wt,L+A,pptase_weak,L+A,,,ST,SpT,WT,pptase,,,0.1110847377165915
+pptase_low,pptase_low,pushpull,kinase_wt,L+A,pptase_wt,L+A,,,ST,SpT,WT,pptase,,,0.10528246515040351
