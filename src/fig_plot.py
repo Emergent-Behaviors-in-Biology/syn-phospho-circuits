@@ -169,7 +169,6 @@ def plot_2d_avg_hex(df, fig, ax, xlabel, ylabel, zlabel, nbins=20, vmin=None, vm
     if vmax == None:
         vmax = values.max()
         
-    print(values.min(), values.max())
         
     if logscale:
         val_norm = mpl.colors.LogNorm(vmin=vmin, vmax=vmax)
