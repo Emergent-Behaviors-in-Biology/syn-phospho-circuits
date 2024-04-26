@@ -1,4 +1,4 @@
-name: /Users/jrocks/Documents/Research/syn-phospho-circuits/.conda
+name: syn-phospho-circuits
 channels:
   - conda-forge
   - defaults
