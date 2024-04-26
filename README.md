@@ -1,6 +1,6 @@
 # Engineering Synthetic Phosphorylation Signaling Networks in Human Cells
 
-This repository contains the code and data associated with the paper Engineering synthetic phosphorylation signaling networks in human cells' authored by X. Yang and colleagues [[bioRxiv](https://www.biorxiv.org/content/10.1101/2023.09.11.557100v2)]. It provides all necessary resources to reproduce the biophysical modeling analysis detailed in the paper.
+This repository contains the code and data associated with the paper 'Engineering synthetic phosphorylation signaling networks in human cells' authored by X. Yang and colleagues [[bioRxiv](https://www.biorxiv.org/content/10.1101/2023.09.11.557100v2)]. It provides all necessary resources to reproduce the biophysical modeling analysis detailed in the paper.
 
 ## Repository Structure
 
