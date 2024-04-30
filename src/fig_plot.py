@@ -359,120 +359,120 @@ def plot_activation_curves(df, fig, ax, xlabel, ylabel, zlabel, fmt='.--',
         cbar.set_label(zlabel + "/" + normalize_zlabel)
         
         
-def plot_sensitivity_curves(df, fig, ax, xlabel, ylabel, zlabel, fmt='.--', 
-                           normalize_xlabel=None, normalize_ylabel=None, normalize_zlabel=None, xlim=(1e2, 1e5), ylim=(1e2, 1e4),
-                            nxbins=10, nSTbins=10, ST_bin_edges=None, use_median=False,
-                          xlog_scale=True, ylog_scale=True):
+# def plot_sensitivity_curves(df, fig, ax, xlabel, ylabel, zlabel, fmt='.--', 
+#                            normalize_xlabel=None, normalize_ylabel=None, normalize_zlabel=None, xlim=(1e2, 1e5), ylim=(1e2, 1e4),
+#                             nxbins=10, nSTbins=10, ST_bin_edges=None, use_median=False,
+#                           xlog_scale=True, ylog_scale=True):
     
     
-    x = df[xlabel].values
-    y = df[ylabel].values
-    z = df[zlabel].values
+#     x = df[xlabel].values
+#     y = df[ylabel].values
+#     z = df[zlabel].values
     
-    if normalize_xlabel is not None:
-        x = x / df[normalize_xlabel].values
+#     if normalize_xlabel is not None:
+#         x = x / df[normalize_xlabel].values
         
-    if normalize_ylabel is not None:
-        y = y / df[normalize_ylabel].values
+#     if normalize_ylabel is not None:
+#         y = y / df[normalize_ylabel].values
         
-    if normalize_zlabel is not None:
-        z = z / df[normalize_zlabel].values
+#     if normalize_zlabel is not None:
+#         z = z / df[normalize_zlabel].values
         
-    df_tmp = pd.DataFrame({'x': x, 'y': y, 'z': z})
+#     df_tmp = pd.DataFrame({'x': x, 'y': y, 'z': z})
     
-    # sort data into bins according to ST_label
-    if ST_bin_edges is None:
-        zbins, z_edges = pd.qcut(z, nSTbins, labels=False, retbins=True)
-    else:
-        zbins, z_edges = pd.cut(z, ST_bin_edges, labels=False, retbins=True)
+#     # sort data into bins according to ST_label
+#     if ST_bin_edges is None:
+#         zbins, z_edges = pd.qcut(z, nSTbins, labels=False, retbins=True)
+#     else:
+#         zbins, z_edges = pd.cut(z, ST_bin_edges, labels=False, retbins=True)
                                  
-    df_tmp['zbin'] = zbins
+#     df_tmp['zbin'] = zbins
         
         
       
-    # calculate average value of z in each bin
-    z_avg = df_tmp.groupby(['zbin'])['z'].mean()
+#     # calculate average value of z in each bin
+#     z_avg = df_tmp.groupby(['zbin'])['z'].mean()
       
-    # create smap to color each curve according to ST
-    norm = mpl.colors.LogNorm(vmin=min(z_avg.min(), 1e2), vmax=max(z_avg.max(), 1e4))
-    cmap=plt.cm.cividis
-    smap = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
+#     # create smap to color each curve according to ST
+#     norm = mpl.colors.LogNorm(vmin=min(z_avg.min(), 1e2), vmax=max(z_avg.max(), 1e4))
+#     cmap=plt.cm.cividis
+#     smap = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
      
-    # iterate through each bin and plot activation curve
-    for ibin, zgroup in df_tmp.groupby(['zbin']):
+#     # iterate through each bin and plot activation curve
+#     for ibin, zgroup in df_tmp.groupby(['zbin']):
         
-        # sort data within bin into new bins along x axis
-        xbins, edges = pd.qcut(zgroup['x'], nxbins, 
-                                    labels=False, retbins=True)
-        zgroup['xbin'] = xbins
+#         # sort data within bin into new bins along x axis
+#         xbins, edges = pd.qcut(zgroup['x'], nxbins, 
+#                                     labels=False, retbins=True)
+#         zgroup['xbin'] = xbins
         
         
         
-        # calculate statistics of each bin
-        if use_median:
-            x = zgroup.groupby('xbin')['x'].median().values 
-            y = zgroup.groupby('xbin')['y'].median().values 
-        else:
-            x = zgroup.groupby('xbin')['x'].mean().values 
-            y = zgroup.groupby('xbin')['y'].mean().values 
+#         # calculate statistics of each bin
+#         if use_median:
+#             x = zgroup.groupby('xbin')['x'].median().values 
+#             y = zgroup.groupby('xbin')['y'].median().values 
+#         else:
+#             x = zgroup.groupby('xbin')['x'].mean().values 
+#             y = zgroup.groupby('xbin')['y'].mean().values 
         
-        if xlog_scale:
-            dx = np.log10(x[1:]) - np.log10(x[0:len(x)-1])
-        else:
-            dx = x[1:] - x[0:len(x)-1]
+#         if xlog_scale:
+#             dx = np.log10(x[1:]) - np.log10(x[0:len(x)-1])
+#         else:
+#             dx = x[1:] - x[0:len(x)-1]
             
-        if ylog_scale:
-            dy = np.log10(y[1:]) - np.log10(y[0:len(y)-1])
-        else:
-            dy = y[1:] - y[0:len(y)-1]
+#         if ylog_scale:
+#             dy = np.log10(y[1:]) - np.log10(y[0:len(y)-1])
+#         else:
+#             dy = y[1:] - y[0:len(y)-1]
             
-#         print('dx', dx)
-#         print('dy', dy)
+# #         print('dx', dx)
+# #         print('dy', dy)
         
-        dydx = dy/dx
+#         dydx = dy/dx
         
-#         print('dydx', dydx)
+# #         print('dydx', dydx)
             
             
-        ax.plot((x[1:] + x[0:len(x)-1])/2, dydx, '-', color=smap.to_rgba(z_avg[ibin]))
+#         ax.plot((x[1:] + x[0:len(x)-1])/2, dydx, '-', color=smap.to_rgba(z_avg[ibin]))
 
 
     
-    ax.set_xlim(*xlim)
-    ax.set_ylim(*ylim)
+#     ax.set_xlim(*xlim)
+#     ax.set_ylim(*ylim)
     
     
-    if normalize_xlabel is None:
-        ax.set_xlabel(xlabel)
-    else:
-        ax.set_xlabel(xlabel + "/" + normalize_xlabel)
+#     if normalize_xlabel is None:
+#         ax.set_xlabel(xlabel)
+#     else:
+#         ax.set_xlabel(xlabel + "/" + normalize_xlabel)
         
-    if normalize_ylabel is None:
-        ax.set_ylabel(ylabel)
-    else:
-        ax.set_ylabel(ylabel + "/" + normalize_ylabel)
+#     if normalize_ylabel is None:
+#         ax.set_ylabel(ylabel)
+#     else:
+#         ax.set_ylabel(ylabel + "/" + normalize_ylabel)
     
-    if xlog_scale:
-        ax.set_xscale('log')
+#     if xlog_scale:
+#         ax.set_xscale('log')
         
-#     if ylog_scale:
-#         ax.set_yscale('log')
+# #     if ylog_scale:
+# #         ax.set_yscale('log')
     
-    # ensure aspect ratio is square
-    ax.set_aspect(1 / ax.get_data_ratio())
+#     # ensure aspect ratio is square
+#     ax.set_aspect(1 / ax.get_data_ratio())
     
     
-    # plot colorbar
-    # make fake image first
-    im = ax.pcolormesh(np.array([[0, 1]]), cmap=cmap, norm=norm)
-    im.set_visible(False)
-    cbar = fig.colorbar(im, ax=ax, orientation='horizontal', aspect=15)
-    cbar.ax.tick_params(which='major', direction='out', length=3.0, width=1.0)
+#     # plot colorbar
+#     # make fake image first
+#     im = ax.pcolormesh(np.array([[0, 1]]), cmap=cmap, norm=norm)
+#     im.set_visible(False)
+#     cbar = fig.colorbar(im, ax=ax, orientation='horizontal', aspect=15)
+#     cbar.ax.tick_params(which='major', direction='out', length=3.0, width=1.0)
     
-    if normalize_zlabel is None:
-        cbar.set_label(zlabel)
-    else:
-        cbar.set_label(zlabel + "/" + normalize_zlabel)
+#     if normalize_zlabel is None:
+#         cbar.set_label(zlabel)
+#     else:
+#         cbar.set_label(zlabel + "/" + normalize_zlabel)
     
     
     
